@@ -1,0 +1,62 @@
+﻿@page "/Edit"
+
+<h3>Edit</h3>
+<form method="post">
+    <input type="hidden" asp-for="Username" />
+
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" asp-for="ContactInput.FirstName" required>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" asp-for="ContactInput.LastName" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" asp-for="ContactInput.Email" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <select class="form-control" asp-for="ContactInput.Title">
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Ms">Ms</option>
+            <option value="Dr">Dr</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" asp-for="ContactInput.Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" class="form-control" asp-for="ContactInput.DateOfBirth">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" asp-for="ContactInput.MarriageStatus">
+        <label class="form-check-label" for="marriageStatus">Married</label>
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" asp-for="ContactInput.Username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" asp-for="ContactInput.Password" required>
+    </div>
+    <div class="form-group">
+        <label for="role">Role</label>
+        <select class="form-control" asp-for="ContactInput.Role">
+            <option value="normal">Normal</option>
+            <option value="admin">Admin</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+@code {
+
+}

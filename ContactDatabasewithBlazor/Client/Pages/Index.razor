@@ -1,0 +1,21 @@
+﻿@page "/"
+<div class="container">
+    <h1>Login</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" name="LoginInput.Username" class="form-control" required />
+            <div class="text-danger" asp-validation-summary="All"></div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="LoginInput.Password" class="form-control" required />
+            <div class="text-danger" asp-validation-summary="All"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+@code {
+    private LoginInput loginInput = new LoginInput();
+}

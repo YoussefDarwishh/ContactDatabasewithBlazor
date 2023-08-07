@@ -1,0 +1,94 @@
+﻿@page "/Admin"
+
+<h3>Admin</h3>
+
+<form method="post">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="FirstName" required>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="LastName" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="Email" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <select class="form-control" id="title" name="Title">
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Ms">Ms</option>
+            <option value="Dr">Dr</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" class="form-control" id="dateOfBirth" name="DateOfBirth">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="marriageStatus" name="MarriageStatus">
+        <label class="form-check-label" for="marriageStatus">Married</label>
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="Username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="Password" required>
+    </div>
+    <div class="form-group">
+        <label for="role">Role</label>
+        <select class="form-control" id="role" name="Role">
+            <option value="normal">Normal</option>
+            <option value="admin">Admin</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Contact</button>
+</form>
+
+<table class="table table-striped" id="contactsTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Username</th>
+                    <th>Date of Birth</th>
+                    <th>Marriage Status</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Contacts)
+                {
+                    <tr>
+                        <td>@contact.FirstName</td>
+                        <td>@contact.LastName</td>
+                        <td>@contact.Email</td>
+                        <td>@contact.Title</td>
+                        <td>@contact.Description</td>
+                        <td>@contact.Username</td>
+                        <td>@contact.DateOfBirth.ToShortDateString()</td>
+                        <td>@(contact.MarriageStatus ? "Married" : "Single")</td>
+                        <td>
+                            <a asp-page="Edit" asp-route-username="@contact.Username" class="btn">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+@code {
+    public List<ContactView> Contacts;
+}

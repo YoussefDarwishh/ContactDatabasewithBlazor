@@ -1,0 +1,33 @@
+﻿@page "/User"
+<h3>User</h3>
+<table class="table table-striped" id="contactsTable">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date of Birth</th>
+            <th>Marriage Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Contacts)
+        {
+            <tr>
+                <td>@contact.FirstName</td>
+                <td>@contact.LastName</td>
+                <td>@contact.Email</td>
+                <td>@contact.Title</td>
+                <td>@contact.Description</td>
+                <td>@contact.DateOfBirth.ToShortDateString()</td>
+                <td>@(contact.MarriageStatus ? "Married" : "Single")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    public List<ContactView> Contacts;
+}
