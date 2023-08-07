@@ -24,7 +24,7 @@ var app = builder.Build();
 
 app.MapGet("/allcontacts", async (HttpContext context, EdgeDBClient client) =>
 {
-    var result = await client.QueryAsync<ContactView>("SELECT Contact {*} Order by .first_name;");
+    var result = await client.QueryAsync<ContactView>("SELECT Contact {*};");
     return Results.Ok(result.ToList());
 });
 
