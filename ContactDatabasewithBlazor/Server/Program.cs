@@ -22,6 +22,12 @@ builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
+app.MapGet("/allcontacts", async (HttpContext context, EdgeDBClient client) =>
+{
+    var result = await client.QueryAsync<ContactView>("SELECT Contact {*} Order by .first_name;");
+    return Results.Ok(result.ToList());
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
